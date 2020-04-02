@@ -1,0 +1,6 @@
+name: buildkit
+description: Builds an image with Buildkit
+author: https://github.com/venturehacks
+requirements:
+- jq
+- kubectl

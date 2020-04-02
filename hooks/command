@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -euo pipefail
+
+main() {
+  local script_dir
+  script_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+  local root_dir
+  root_dir="$(dirname "$script_dir")"
+
+  local command
+  command="$(jq -r -n -f "$root_dir/lib/buildctl.jq")"
+
+  echo "$command"
+
+  echo "+++ :building_construction: Building image..."
+  eval "$command"
+}
+
+main "$@"
