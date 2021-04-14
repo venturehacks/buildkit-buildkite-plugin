@@ -11,6 +11,7 @@
 (if env.BUILDKIT_CA then . += ["--tlscacert \(env.BUILDKIT_CA)"] else . end) |
 (if env.BUILDKIT_CERT then . += ["--tlscert \(env.BUILDKIT_CERT)"] else . end) |
 (if env.BUILDKIT_KEY then . += ["--tlskey \(env.BUILDKIT_KEY)"] else . end) |
+(if env.BUILDKIT_MOUNT_SSH_AGENT then . += ["--ssh default=\($SSH_AUTH_SOCK)"] else . end) |
 (. += ["build"]) |
 (. += ["--progress=\($config.progress // "plain")"]) |
 (. += ["--frontend=\($config.frontend // "dockerfile.v0")"]) |
