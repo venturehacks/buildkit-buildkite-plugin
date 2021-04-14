@@ -16,7 +16,7 @@
 (. += ["--frontend=\($config.frontend // "dockerfile.v0")"]) |
 (. += ["--local context=\"\($config.context // ".")\""]) |
 (. += ["--local dockerfile=\"\($config.dockerfile // $config.context // ".")\""]) |
-(if env.BUILDKIT_MOUNT_SSH_AGENT then . += ["--ssh default=\(env.SSH_AUTH_SOCK)"] else . end) |
+(if env.BUILDKIT_MOUNT_SSH_AGENT then . += ["--ssh default] else . end) |
 (if $config.target then . += ["--opt target=\"\($config.target)\""] else . end) |
 (if $config.platform then . += ["--opt platform=\"\($config.platform)\""] else . end) |
 (. += ($config.build_args // [] | to_entries | map("--opt build-arg:\(.key)=\"\(.value)\""))) |
