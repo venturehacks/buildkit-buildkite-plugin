@@ -7,7 +7,7 @@
   first // {}
 ) as $config |
 
-["buildctl"] |
+["ssh-agent; buildctl"] |
 (if env.BUILDKIT_CA then . += ["--tlscacert \(env.BUILDKIT_CA)"] else . end) |
 (if env.BUILDKIT_CERT then . += ["--tlscert \(env.BUILDKIT_CERT)"] else . end) |
 (if env.BUILDKIT_KEY then . += ["--tlskey \(env.BUILDKIT_KEY)"] else . end) |
